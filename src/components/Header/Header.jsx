@@ -1,15 +1,16 @@
 
+import { useState } from 'react'
 import './Header.css'
+import Footer from '../Footer/Footer'
 
-const Header = ({a = 2,b = 4,mainText}) => {
-    // let props = {
-    //     mainText : 'This is main text',
-    //     secondText : 'This is second text',
-    //     thirdText : 'This is third text',
-    // }
+const Header = ({value,setValue}) => {
 
     return <div className="Header">
-        {mainText}
+        <>
+         this is {value} from Header component
+        </>
+        <br />
+        <button onClick={() => setValue(20) }>Change Value</button>
     </div>
 }
 
