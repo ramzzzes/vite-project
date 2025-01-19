@@ -1,6 +1,6 @@
 import './Footer.css'
 
-function Header({value,setValue}) {
+function Footer({value,setValue}) {
 
     return <div className='Footer'>
         this is {value} from Footer component
@@ -11,4 +11,4 @@ function Header({value,setValue}) {
     </div>
 }
 
-export default Header
+export default Footer

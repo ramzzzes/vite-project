@@ -1,9 +1,88 @@
-import {useCallback, useEffect, useMemo, useState} from "react";
-import Child from "./components/Child.jsx";
+import {useCallback, useEffect, useMemo, useRef, useState} from "react";
+import axios from 'axios';
 
 // const funccount = new Set();
 
 function App() {
+
+ 
+  // const [movies,setMovies] = useState([])
+  // const [error,setError] = useState('')
+ 
+
+  //  function fetchMovies(){
+  //      fetch('https://swapi.dev/api/films/')
+  //          .then(response => { 
+  //              return response.json()
+  //          })
+  //          .then(data => {
+  //           console.log(data.results)
+  //           setMovies(data.results)
+
+  //          })
+  //          .catch()
+  //  }
+
+
+  // async function fetchMovies(){
+
+  //   try {
+  //     setError('')
+  //     const response = await axios.get('https://swapi.dev/api/films/')
+  //     setMovies(response.data.results)
+  //   } catch (error) {
+  //     setError('Try again later')
+  //     // console.log(error.response.data);
+  //   }
+
+   
+  // }
+
+  //  useEffect(() => {
+  //      fetchMovies()
+  //  },[])
+
+
+  //  if(error.length > 0){
+  //   return <div style={{color:'red'}}>{error}</div>
+  //  }else{
+  //   return movies.map(movie => (
+  //     <div key={movie.title}>{movie.title}</div>
+  //    ))
+  //  }
+
+  //  return error.length > 0 ? <div style={{color:'red'}}>{error}</div> : movies.map(movie => (
+  //   <div key={movie.title}>{movie.title}</div>
+  //  ))
+    
+    
+    
+
+
+
+ 
+  // const [name,setName] = useState('')
+  // const inputRef = useRef()
+  // const triggerRef = useRef()
+
+  // const focus = () => {
+  //   triggerRef.current.click()
+  // }
+
+  // const trigger = () => {
+  //   alert('triggered')
+  // }
+
+  // return (
+  //     <>
+  //         <input  ref={inputRef} type="text" onChange={e => setName(e.target.value)} value={name} />
+  //         <button onClick={focus}>first button</button>
+
+  //         <button ref={triggerRef} onClick={trigger}>Trigger</button>
+  //     </>
+  // );
+
+  // return
 
     // const [counterOne,setCounterOne] = useState(0)
     // const [counterTwo,setCounterTwo] = useState(0)
