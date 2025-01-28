@@ -9,26 +9,119 @@ import styled from 'styled-components';
 
 function App() {
 
-  const GoodTag = styled.div`
-    font-style : italic;
-    color: ${props => props.color || 'yellow'};
-    font-size: ${props => props.size};
-  `;
+    
+  const [email,setEmail] = useState('')
+  const [password,setPassword] = useState('')
+  const [errors,setErrors] = useState('')
+  const [user,setUser] = useState({})
+  const [disabled,setDisabled] = useState(true)
+
+  const validateEmail = (email) => {
+    return String(email)
+      .toLowerCase()
+      .match(
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      );
+  };
+
+
+  useEffect(() => {
+
+    if(email.length == 0){
+      setDisabled(true)
+    }else{
+      setDisabled(false)
+    }
+
+    if(password.length == 0){
+      setDisabled(true)
+    }else{
+      setDisabled(false)
+    }
+
+  },[email,password])
+
+    const submitHandler = async (e) => {
+        try {
+            e.preventDefault()
+            setErrors('')
+
+            if(!validateEmail(email)){
+              setErrors('Email format is invalid')
+              return
+            }
+
+            if(email.length == 0){
+              setErrors('Email field is required')
+              // setTimeout(() => {
+              //   setErrors('')
+              // },2000)
+              return
+            }
+
+            if(password.length == 0){
+              setErrors('Password field is required')
+              return
+            }
+
+
+            const response = await axios.post(
+                'https://accounts.tnet.ge/api/ka/user/auth',
+                {
+                    Email: email,
+                    Password : password
+                }, {
+                    headers: {
+                        'content-type': 'application/json'
+                    }
+                })
+
+              setUser(response.data.data.Data)
+
+
+        }catch (e){
+          const errorText = e.response.data.message.error
+          setErrors(errorText)
+            // const errorCode = e.response.status;
+
+            // if(errorCode === 404){
+            //   alert('User not Found')
+            // }
+
+            // if(errorCode === 422){
+            //   alert('User data is invalid')
+            // }
+        }
+    }
+
+  return <>
+  {/* {user.user_name} */}
+    {user.user_name ? <div>welcome {user.user_name}</div> :  <form action="" method="POST" onSubmit={submitHandler}>
+          <br/>
+          <input type="text" placeholder="text" value={email} onChange={(e) => setEmail(e.target.value)}/>
+          <br />
+          <input type="password" placeholder="text" value={password} onChange={(e) => setPassword(e.target.value)}/>
+          <button type="submit" disabled={disabled}>Save</button>
+          <br/>
+          <p style={{color:'red'}}>{errors}</p>
+      </form>}
+  </>
+
 
 //   const NormalTag = styled.div`
 //   color: green;
 //   font-size: 24px;
 // `;
 
-  return <> 
-    <GoodTag size={'32px'}>
-      text 2 
-    </GoodTag>
-    <GoodTag color='green' size={'12px'}>
-      text 2 
-    </GoodTag>
+  // return <> 
+  //   <GoodTag size={'32px'}>
+  //     text 2 
+  //   </GoodTag>
+  //   <GoodTag color='green' size={'12px'}>
+  //     text 2 
+  //   </GoodTag>
     
-  </>
+  // </>
   // const [fontSize,setFontSize] = useState(16)
 
   // const handleFontSize = (e) => {
