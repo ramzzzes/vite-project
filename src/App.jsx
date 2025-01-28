@@ -1,9 +1,65 @@
 import {useCallback, useEffect, useMemo, useRef, useState} from "react";
 import axios from 'axios';
+import styled from 'styled-components';
+
+// import './App.css'
+// import './Styles.scss'
 
 // const funccount = new Set();
 
 function App() {
+
+  const GoodTag = styled.div`
+    font-style : italic;
+    color: ${props => props.color || 'yellow'};
+    font-size: ${props => props.size};
+  `;
+
+//   const NormalTag = styled.div`
+//   color: green;
+//   font-size: 24px;
+// `;
+
+  return <> 
+    <GoodTag size={'32px'}>
+      text 2 
+    </GoodTag>
+    <GoodTag color='green' size={'12px'}>
+      text 2 
+    </GoodTag>
+    
+  </>
+  // const [fontSize,setFontSize] = useState(16)
+
+  // const handleFontSize = (e) => {
+  //   setFontSize(e.target.value)
+  // }
+
+  // return <>
+  //   <div className='text'   >
+  //     text
+  //     <p className="pLabel">
+  //       p text
+  //     </p>
+  //   </div>
+  //   <div className="label">
+  //   label
+  //   </div>
+  // </>
+  {/* <input type="text" onChange={handleFontSize} /> */}
+  
+  // const styles = {
+  //   color:"red",
+  //   "font-size" : "32%",
+  //   // fontSize : 32,
+  //   // fontFamily : "Arial"
+  //   // "font-size" : 32
+  // }
+
+  // return <div style={styles}>
+  //   this is text
+  // </div>
+  
 
  
   // const [movies,setMovies] = useState([])
