@@ -32,6 +32,9 @@ function App() {
     <>
         <button onClick={() => dispatch({type : "SET",payload : 'Davit',})}> set Davit </button>
         <button onClick={() => dispatch({type : "SET",payload : 'GIORGI'})}> set Giorgi</button>
+
+
+        changes after 1 month
         <br />
         {counter} From App.jsx
         <br />
